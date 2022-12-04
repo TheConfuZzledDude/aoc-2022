@@ -76,7 +76,7 @@ fn main() {
         .lines()
         .map(|line| {
             let mut chars = line.chars();
-            let opponent = Shape::from_opponent_choice(chars.nth(0).unwrap());
+            let opponent = Shape::from_opponent_choice(chars.next().unwrap());
             Shape::from_player_choice(chars.nth(1).unwrap()).score(opponent)
         })
         .sum();
@@ -87,7 +87,7 @@ fn main() {
         .lines()
         .map(|line| {
             let mut chars = line.chars();
-            let opponent = Shape::from_opponent_choice(chars.nth(0).unwrap());
+            let opponent = Shape::from_opponent_choice(chars.next().unwrap());
             let choice = Shape::from_result(opponent, chars.nth(1).unwrap());
             choice.score(opponent)
         })
