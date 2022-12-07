@@ -7,7 +7,7 @@ fn main() {
         .chars()
         .collect_vec()
         .windows(4)
-        .find_position(|code| code.iter().all_unique()).unwrap().0 + 4;
+        .position(|code| code.iter().all_unique()).unwrap() + 4;
 
     println!("Part 1: {}", position);
 
@@ -15,7 +15,7 @@ fn main() {
         .chars()
         .collect_vec()
         .windows(14)
-        .find_position(|code| code.iter().all_unique()).unwrap().0 + 14;
+        .position(|code| code.iter().all_unique()).unwrap() + 14;
 
     println!("Part 2: {}", position);
 }
