@@ -40,13 +40,13 @@ fn main() {
 
     let total = tree.values().fold(
         0,
-        |acc, &size| if size <= 100000 { acc + size } else { acc },
+        |acc, &size| if size <= 100_000 { acc + size } else { acc },
     );
 
-    println!("Part 1: {}", total);
+    println!("Part 1: {total}");
 
-    let unused = 70000000 - tree.get(Path::new("/")).unwrap();
-    let required = 30000000 - unused;
+    let unused = 70_000_000 - tree.get(Path::new("/")).unwrap();
+    let required = 30_000_000 - unused;
 
     let smallest = tree
         .values()
@@ -55,5 +55,5 @@ fn main() {
         .next()
         .unwrap();
 
-    println!("Part 2: {}", smallest);
+    println!("Part 2: {smallest}");
 }

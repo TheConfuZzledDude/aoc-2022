@@ -9,7 +9,7 @@ fn main() {
         .windows(4)
         .position(|code| code.iter().all_unique()).unwrap() + 4;
 
-    println!("Part 1: {}", position);
+    println!("Part 1: {position}");
 
     let position = input
         .chars()
@@ -17,5 +17,5 @@ fn main() {
         .windows(14)
         .position(|code| code.iter().all_unique()).unwrap() + 14;
 
-    println!("Part 2: {}", position);
+    println!("Part 2: {position}");
 }

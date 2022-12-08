@@ -15,7 +15,7 @@ fn main() {
         for (index, id) in line.chars().enumerate() {
             let index = index + 3;
             if index % 4 == 0 && id != ' ' {
-                stacks.entry(index / 4).or_default().insert(0, id)
+                stacks.entry(index / 4).or_default().insert(0, id);
             }
         }
     }
@@ -50,7 +50,7 @@ fn main() {
         .map(|(_id, stack)| stack.pop().unwrap())
         .join("");
 
-    println!("Part 1: {}", output);
+    println!("Part 1: {output}");
 
     let mut stacks = stacks_copy;
 
@@ -78,5 +78,5 @@ fn main() {
         .map(|(_id, stack)| stack.pop().unwrap())
         .join("");
 
-    println!("Part 2: {}", output);
+    println!("Part 2: {output}");
 }

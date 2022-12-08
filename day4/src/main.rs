@@ -21,7 +21,7 @@ fn main() {
         })
         .count();
 
-    println!("Part 1: {}", total);
+    println!("Part 1: {total}");
 
     let total = input
         .lines()
@@ -45,5 +45,5 @@ fn main() {
         })
         .count();
 
-    println!("Part 2: {}", total);
+    println!("Part 2: {total}");
 }

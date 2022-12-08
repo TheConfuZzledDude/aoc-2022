@@ -1,13 +1,9 @@
 use itertools::Itertools;
-use regex::Regex;
 
 fn main() {
     let input = include_str!("input");
 
-    let re = Regex::new(r"\n\n").unwrap();
-
-    let inventories = re
-        .split(input)
+    let inventories = input.split("\n\n")
         .map(|inventory| {
             inventory
                 .lines()
@@ -20,5 +16,5 @@ fn main() {
 
     println!("Part 1: {}", inventories.first().unwrap());
 
-    println!("Part 2: {}", inventories.iter().take(3).sum::<u32>())
+    println!("Part 2: {}", inventories.iter().take(3).sum::<u32>());
 }

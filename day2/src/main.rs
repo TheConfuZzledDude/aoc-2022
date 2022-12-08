@@ -19,11 +19,11 @@ impl PartialOrd for Shape {
 }
 
 impl Shape {
-    pub fn value(self) -> i32 {
+    pub const fn value(self) -> i32 {
         self as i32
     }
 
-    pub fn from_value(val: i32) -> Shape {
+    pub const fn from_value(val: i32) -> Self {
         match val {
             1 => Self::Rock,
             2 => Self::Paper,
@@ -32,7 +32,7 @@ impl Shape {
         }
     }
 
-    pub fn score(&self, opponent: Self) -> i32 {
+    pub fn score(self, opponent: Self) -> i32 {
         self.value()
             + match self.partial_cmp(&opponent).unwrap() {
                 Ordering::Greater => 6,
@@ -41,7 +41,7 @@ impl Shape {
             }
     }
 
-    pub fn from_opponent_choice(choice: char) -> Shape {
+    pub const fn from_opponent_choice(choice: char) -> Self {
         match choice {
             'A' => Self::Rock,
             'B' => Self::Paper,
@@ -50,7 +50,7 @@ impl Shape {
         }
     }
 
-    pub fn from_player_choice(choice: char) -> Shape {
+    pub const fn from_player_choice(choice: char) -> Self {
         match choice {
             'X' => Self::Rock,
             'Y' => Self::Paper,
@@ -59,11 +59,11 @@ impl Shape {
         }
     }
 
-    pub fn from_result(opponent: Shape, outcome: char) -> Shape {
+    pub const fn from_result(opponent: Self, outcome: char) -> Self {
         match outcome {
-            'X' => Shape::from_value((opponent.value() - 2).rem_euclid(3) + 1),
+            'X' => Self::from_value((opponent.value() - 2).rem_euclid(3) + 1),
             'Y' => opponent,
-            'Z' => Shape::from_value(opponent.value() % 3 + 1),
+            'Z' => Self::from_value(opponent.value() % 3 + 1),
             _ => panic!(),
         }
     }
@@ -81,7 +81,7 @@ fn main() {
         })
         .sum();
 
-    println!("Part 1: {}", total);
+    println!("Part 1: {total}");
 
     let total: i32 = input
         .lines()
@@ -93,5 +93,5 @@ fn main() {
         })
         .sum();
 
-    println!("Part 2: {}", total);
+    println!("Part 2: {total}");
 }

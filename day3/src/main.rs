@@ -1,10 +1,10 @@
 use itertools::Itertools;
 use std::collections::HashSet;
 
-fn priority_from_item(item: &char) -> u32 {
-    match *item {
-        'a'..='z' => *item as u32 - 'a' as u32 + 1,
-        'A'..='Z' => *item as u32 - 'A' as u32 + 27,
+fn priority_from_item(item: char) -> u32 {
+    match item {
+        'a'..='z' => item as u32 - 'a' as u32 + 1,
+        'A'..='Z' => item as u32 - 'A' as u32 + 27,
         _ => panic!(),
     }
 }
@@ -22,12 +22,13 @@ fn main() {
                 .take(length / 2)
                 .collect::<HashSet<char>>()
                 .intersection(&chars.collect())
+                .copied()
                 .map(priority_from_item)
                 .sum::<u32>()
         })
         .sum();
 
-    println!("Part 1: {}", total);
+    println!("Part 1: {total}");
 
     let total: u32 = input
         .lines()
@@ -39,12 +40,12 @@ fn main() {
                 .map(|group| group.chars().by_ref().collect::<HashSet<char>>())
                 .reduce(|acc, e| &acc & &e)
                 .unwrap()
-                .iter()
+                .into_iter()
                 .map(priority_from_item)
                 .next()
                 .unwrap()
         })
         .sum();
 
-    println!("Part 2: {}", total);
+    println!("Part 2: {total}");
 }
